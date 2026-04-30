@@ -18,10 +18,35 @@ export default function Home() {
     { id: 2, text: "Build a project", completed: false },
   ]);
 
+
+  // State for input
+  const [input, setInput] = useState("");
+
+  const addTask = () => {
+  if (!input) return;
+
+  const newTask: Task = {
+    id: Date.now(),
+    text: input,
+    completed: false,
+  };
+
+  setTasks([...tasks, newTask]);
+  setInput("");
+};
+
   return (
     <div>
       <h1>Task Manager</h1>
 
+<input
+  type="text"
+  value={input}
+  onChange={(e) => setInput(e.target.value)}
+  placeholder="Enter a task"
+/>
+
+<button onClick={addTask}>Add</button>
       {/* Render task list */}
       <ul>
         {tasks.map((task) => (
