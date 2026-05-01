@@ -44,6 +44,11 @@ const toggleTask = (id: number) => {
 
   setTasks(updatedTasks);
 };
+
+const deleteTask = (id: number) => {
+  const filteredTasks = tasks.filter((task) => task.id !== id);
+  setTasks(filteredTasks);
+};
   return (
     <div>
       <h1>Task Manager</h1>
@@ -60,15 +65,23 @@ const toggleTask = (id: number) => {
       <ul>
         {tasks.map((task) => (
           <li
-  key={task.id}
-  onClick={() => toggleTask(task.id)}
-  style={{
-    textDecoration: task.completed ? "line-through" : "none",
-    cursor: "pointer",
-  }}
->
-  {task.text}
-</li>
+              key={task.id}
+              onClick={() => toggleTask(task.id)}
+              style={{
+                textDecoration: task.completed ? "line-through" : "none",
+                cursor: "pointer",
+              }}
+          >
+              {task.text}
+               <button
+                  onClick={(e) => {
+                  e.stopPropagation(); // prevents toggle
+                  deleteTask(task.id);
+                }}
+            >
+                  Delete
+              </button>
+          </li>
         ))}
       </ul>
     </div>
