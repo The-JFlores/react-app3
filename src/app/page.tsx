@@ -22,7 +22,7 @@ export default function Home() {
   // State for input
   const [input, setInput] = useState("");
 
-  const addTask = () => {
+ const addTask = () => {
   if (!input) return;
 
   const newTask: Task = {
@@ -35,6 +35,15 @@ export default function Home() {
   setInput("");
 };
 
+const toggleTask = (id: number) => {
+  const updatedTasks = tasks.map((task) =>
+    task.id === id
+      ? { ...task, completed: !task.completed }
+      : task
+  );
+
+  setTasks(updatedTasks);
+};
   return (
     <div>
       <h1>Task Manager</h1>
@@ -50,9 +59,16 @@ export default function Home() {
       {/* Render task list */}
       <ul>
         {tasks.map((task) => (
-          <li key={task.id}>
-            {task.text}
-          </li>
+          <li
+  key={task.id}
+  onClick={() => toggleTask(task.id)}
+  style={{
+    textDecoration: task.completed ? "line-through" : "none",
+    cursor: "pointer",
+  }}
+>
+  {task.text}
+</li>
         ))}
       </ul>
     </div>
