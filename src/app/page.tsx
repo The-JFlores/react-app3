@@ -60,19 +60,20 @@ const deleteTask = (id: number) => {
   placeholder="Enter a task"
 />
 
-<button onClick={addTask}>Add</button>
+<button className="addTask"
+onClick={addTask}>Add</button>
       {/* Render task list */}
       <ul>
         {tasks.map((task) => (
           <li
               key={task.id}
               onClick={() => toggleTask(task.id)}
-              style={{
-                textDecoration: task.completed ? "line-through" : "none",
-                cursor: "pointer",
-              }}
+              className={task.completed ? "completed" : ""}
           >
-              {task.text}
+            <span className="check">
+              {task.completed ? "✔" : ""}
+            </span>
+            {task.text}
                 <button
                   className="delete-btn"
                   onClick={(e) => {

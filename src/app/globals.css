@@ -3,10 +3,29 @@
 body {
   font-family: Arial, sans-serif;
 }
+/* Add Task button */
+.addTask {
+  margin-left: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
 
 /* Delete button styling */
 .delete-btn {
   margin-left: 10px;
   padding: 4px 8px;
   cursor: pointer;
+}
+
+/* Completed task*/
+
+.completed {
+  color:#fa0404;
+}
+
+/* Check icon */
+.check {
+  margin-right: 8px;
+  color: #0dff00;
+  font-weight: bold;
 }
