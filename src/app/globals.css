@@ -3,3 +3,10 @@
 body {
   font-family: Arial, sans-serif;
 }
+
+/* Delete button styling */
+.delete-btn {
+  margin-left: 10px;
+  padding: 4px 8px;
+  cursor: pointer;
+}

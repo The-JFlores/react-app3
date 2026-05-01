@@ -73,14 +73,15 @@ const deleteTask = (id: number) => {
               }}
           >
               {task.text}
-               <button
+                <button
+                  className="delete-btn"
                   onClick={(e) => {
-                  e.stopPropagation(); // prevents toggle
-                  deleteTask(task.id);
-                }}
-            >
+                    e.stopPropagation();
+                    deleteTask(task.id);
+                    }}
+                  >
                   Delete
-              </button>
+                </button>
           </li>
         ))}
       </ul>
